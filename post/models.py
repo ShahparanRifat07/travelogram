@@ -23,7 +23,7 @@ class Post(models.Model):
     privacy = models.CharField(max_length=2, default=2, choices=PRIVACY_CHOICES)
 
     def __str__(self):
-        return self.user.username
+        return self.user.username + " " + str(self.pk)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

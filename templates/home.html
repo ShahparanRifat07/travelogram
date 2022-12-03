@@ -1,10 +1,97 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Travelogram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"
+        integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <div class="contain">
+        <div class="sidemenu">
+            <div class="title">
+                <h1>Travelogram</h1>
+            </div>
+
+            <div class="menu-item">
+                <a href=""><i class="fa-solid fa-house"></i>
+                    <p class="item-text">Home</p>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="item-text">Search</p>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href=""><i class="fa-solid fa-ranking-star"></i>
+                    <p class="item-text">Leaderboard</p>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href=""><i class="fa-solid fa-square-plus"></i>
+                    <p class="item-text">Create</p>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="">
+                    <div class="profile-image">
+                        <img src="https://pbs.twimg.com/profile_images/1310512844954370048/W5NEr-3W_400x400.jpg"
+                            alt="" />
+                        <p class="item-text">Profile</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="menu-item-bottom">
+                <a href=""><i class="fa-solid fa-gear"></i>
+                    <p class="item-text">Settings</p>
+                </a>
+                <a href=""><i class="fa-solid fa-right-from-bracket"></i>
+                    <p class="item-text">Logout</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="box">
+
+                {% for post in posts %}
+
+                <div class="img-card">
+                    <a href=""><img src= "media/{{ post.image }}"
+                            alt="" />
+                    </a>
+                    <div class="overlay">
+                        <div class="content">
+                            <div class="post-profile-div">
+                                <a href="https://www.google.com/"><img class="post-profile"
+                                        src="media/{{ post.user.profile.profile_pic }}"
+                                        alt="" />
+                                    <p>{{ post.user.username }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"
+        integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>

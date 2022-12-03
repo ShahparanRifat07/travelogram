@@ -1,0 +1,291 @@
+.contain {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sidemenu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-right: 1px solid #bdbdbd;
+    width: 350px;
+    padding: 36px;
+    background-color: white;
+  }
+
+  .title {
+    margin-bottom: 50px;
+  }
+
+  .menu-item {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+  }
+
+  .menu-item:hover {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+
+  .menu-item > a {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+  }
+
+  .menu-item > a > p {
+    margin-left: 20px;
+  }
+
+  .profile-image {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-image img {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+  }
+
+  .profile-image > p {
+    margin-left: 12px;
+  }
+
+  .menu-item-bottom {
+    margin-top: auto;
+
+    /* border: 1px solid red; */
+  }
+
+  .menu-item-bottom > a:hover {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+
+  .menu-item-bottom > a {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 15px;
+    padding: 8px;
+    color: black;
+  }
+
+  .menu-item-bottom > a > p {
+    margin-left: 20px;
+  }
+
+
+  @media only screen and (max-width: 900px) {
+    .sidemenu {
+      width: 80px;
+      padding: 20px;
+    }
+
+    .title h1 {
+      display: none;
+    }
+
+    .item-text {
+      display: none;
+    }
+  }
+
+  .middle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-left: 350px;
+    width: 100vw;
+    height: fit-content;
+    background-color: #eeeeee;
+    /* border: 1px solid red; */
+  }
+
+  .box {
+    width: fit-content;
+    columns: 3;
+    column-gap: 20px;
+  }
+
+  .img-card {
+    display: block;
+    position: relative;
+    width: 400px;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    /* border: 1px solid green; */
+  }
+
+  .img-card > a > img {
+    break-inside: avoid;
+    margin-top: 20px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .img-card > .overlay{
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 0;
+    height: 97%;
+    width: 100%;
+    margin-top: 20px;
+    background: rgb(0, 0, 0,0.2);
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+
+  .hover-img > img{
+    break-inside: avoid;
+    margin-top: 20px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .content{
+    pointer-events: all;
+    /* border: 1px solid red; */
+    padding-left: 20px;
+    
+    justify-content: center;
+    position: absolute;
+    bottom: 25px;
+  }
+
+  .post-profile-div > a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .post-profile-div > a >p{
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 15px;
+  }
+
+  .post-profile-div{
+    border-radius: 100%;
+  }
+
+  .post-profile{
+    height: 45px;
+    width: 45px;
+    /* object-fit: contain; */
+    border: 3px snow white;
+    border-radius: 50%;
+    
+  }
+
+
+
+  
+
+  .img-card:hover .overlay{
+    opacity: 1;
+  }
+
+  
+
+  @media only screen and (max-width: 1600px) {
+    .middle {
+        margin-left: 350px;
+    }
+
+    .box {
+      columns: 3;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 380px;
+      break-inside: avoid;
+    }
+  }
+
+  @media only screen and (max-width: 1530px) {
+    .middle {
+        margin-left: 350px;
+    }
+
+    .box {
+      columns: 3;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 350px;
+      break-inside: avoid;
+    }
+  }
+
+  @media only screen and (max-width: 1445px) {
+    .middle {
+        margin-left: 350px;
+    }
+
+    .box {
+      columns: 3;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 280px;
+      break-inside: avoid;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .middle {
+        margin-left: 350px;
+    }
+
+    .box {
+      columns: 2;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 350px;
+      break-inside: avoid;
+    }
+  }
+
+  @media only screen and (max-width: 1080px) {
+    .middle {
+        margin-left: 350px;
+    }
+
+    .box {
+      columns: 1;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 450px;
+      break-inside: avoid;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .middle {
+        margin-left: 80px;
+    }
+
+    .box {
+      columns: 1;
+      column-gap: 10px;
+    }
+
+    .img-card {
+      width: 350px;
+      break-inside: avoid;
+    }
+  }

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Verify</title>
 </head>
 <body>
-$END$
+  <div>
+    <form action="{% url 'verify' %}" method="POST">
+        {%csrf_token%}
+      <input name="verify_code" type="text">
+      <button>Submit</button>
+    </form>
+  </div>
 </body>
 </html>

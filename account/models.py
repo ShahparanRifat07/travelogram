@@ -4,7 +4,6 @@ from .utility import upload_dir_path
 import random
 
 
-
 # Create your models here.
 
 class CustomUser(AbstractUser):
@@ -20,6 +19,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
 
 class Code(models.Model):
     number = models.CharField(max_length=6, blank=True)
