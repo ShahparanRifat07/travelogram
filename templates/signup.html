@@ -1,18 +1,59 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Travelogram</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"
+    integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
+
 <body>
-  <div>
-    <form action="{% url 'signup' %}" method="post">
+  <div class="page-contain">
+
+    <div class="card">
+      <img class="title-img" src="{% static 'img/Travelogram.png' %}" alt="">
+      <form class="ui form" action="{% url 'signup' %}" method="post">
         {%csrf_token%}
-      <input name="username" type="text">
-      <input name="phone" type="text">
-      <input name="password" type="password">
-      <button>Signup</button>
-    </form>
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" name="fullname" placeholder="Full Name">
+        </div>
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Email">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="middle-element">
+          <button class="ui blue button button-width" type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="bottom-card">
+      <p>Have an account? <a href="{% url 'signin' %}"> Sign in</a> </p>
+    </div>
+
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"
+    integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>

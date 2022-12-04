@@ -18,7 +18,8 @@
     <div class="contain">
         <div class="sidemenu">
             <div class="title">
-                <h1>Travelogram</h1>
+                <!-- <h1>Travelogram</h1> -->
+                <img src="{% static 'img/Travelogram.png' %}" alt="">
             </div>
 
             <div class="menu-item">
@@ -55,7 +56,7 @@
                 <a href=""><i class="fa-solid fa-gear"></i>
                     <p class="item-text">Settings</p>
                 </a>
-                <a href=""><i class="fa-solid fa-right-from-bracket"></i>
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i>
                     <p class="item-text">Logout</p>
                 </a>
             </div>

@@ -15,7 +15,11 @@
   }
 
   .title {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+  }
+  .title >img{
+    /* border: 1px solid red; */
+    width: 100%;
   }
 
   .menu-item {
