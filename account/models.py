@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .utility import upload_dir_path
 import random
+from auditlog.registry import auditlog
+from axes.models import AccessAttempt,AccessFailureLog,AccessLog
 
 
 # Create your models here.
@@ -27,6 +29,7 @@ class Profile(models.Model):
         return self.user.username
 
 
+
 class Code(models.Model):
     number = models.CharField(max_length=6, blank=True)
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -45,3 +48,20 @@ class Code(models.Model):
             code_string = code_string + str(code_item[i])
         self.number = code_string
         super().save(*args, **kwargs)
+
+
+class UserRequestIP(models.Model):
+    ip_address = models.GenericIPAddressField(null=True)
+    user = models.OneToOneField(CustomUser,  on_delete=models.CASCADE)
+    path_info = models.CharField(max_length=255)
+    attempt_time = models.DateTimeField(auto_now=True)
+    attempt_numbers = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username
+
+
+auditlog.register(Profile)
+auditlog.register(AccessAttempt)
+auditlog.register(AccessFailureLog)
+auditlog.register(AccessLog)

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 
 <body>
@@ -21,6 +21,11 @@
       <img class="title-img" src="{% static 'img/Travelogram.png' %}" alt="">
       <form class="ui form" action="{% url 'signup' %}" method="post">
         {%csrf_token%}
+
+
+        
+
+
         <div class="field">
           <label>Full Name</label>
           <input type="text" name="fullname" placeholder="Full Name">
@@ -37,6 +42,15 @@
           <label>Password</label>
           <input type="password" name="password" placeholder="Password">
         </div>
+        {% if messages %}
+        <div>
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
 
         <div class="middle-element">
           <button class="ui blue button button-width" type="submit">Sign Up</button>

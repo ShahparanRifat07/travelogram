@@ -5,7 +5,8 @@ from account.models import CustomUser
 from .utility import upload_dir_path
 from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
-
+from auditlog.registry import auditlog
+from django.utils import timezone
 # Create your models here.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,3 +56,18 @@ class Post(models.Model):
         # this_image.show()
         this_image.save(self.image.path, optimize=True,
                         quality=95)
+
+
+class Comment(models.Model):
+    comment = models.TextField(null=True,blank=True)
+    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    created_time = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.comment+"/"+self.user.username
+
+
+
+auditlog.register(Post)
+auditlog.register(Comment)

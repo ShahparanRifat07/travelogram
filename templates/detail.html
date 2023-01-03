@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
+{% load static %}
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Travelogram</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"
         integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,12 +13,62 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-    
+    <title>Document</title>
 
+    <style>
+        .middle-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 350px;
+            width: 100vw;
+            height: fit-content;
+            background-color: #eeeeee;
+            /* border: 1px solid red; */
+        }
+
+        .imageholder {
+            width: 1280px;
+            height: 740px;
+            padding: 20px;
+            /* border: 1px solid red; */
+        }
+
+        .imageholder>h3 {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            /* border: 1px solid red; */
+        }
+
+        .image_view {
+            break-inside: avoid;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+        }
+        form{
+            margin-top: 40px;
+            width: 800px;
+        }
+        .card-comment{
+            background-color: white;
+            /* border: 1px solid red; */
+            width: 800px;
+
+            padding: 20px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
+
     <div class="contain">
+
         <div class="sidemenu">
             <div class="title">
                 <!-- <h1>Travelogram</h1> -->
@@ -64,30 +115,38 @@
             </div>
         </div>
 
-        <div class="middle">
-            <div class="box">
-
-                {% for post in posts %}
-
-                <div class="img-card">
-                    <a href="{% url 'post:detail_post' post.pk %}"><img src="media/{{ post.image }}" alt="" />
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <div class="post-profile-div">
-                                <a href="https://www.google.com/"><img class="post-profile"
-                                        src="media/{{ post.user.profile.profile_pic }}" alt="" />
-                                    <p>{{ post.user.username }}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {% endfor %}
-
+        <div class="middle-content">
+            <div class="imageholder">
+                <h3>{{post.caption}}</h3>
+                <img class="image_view" src="{% get_media_prefix %}{{ post.image }}" alt="">
             </div>
+
+            <form class="ui form" method="POST" action="{% url 'post:detail_post' post.pk %}">
+                {% csrf_token %}
+                <div class="field">
+                    <label>Comment</label>
+                    <textarea name="comment" id="" cols="30" rows="5" placeholder="Comment"></textarea>
+                </div>
+                <button class="ui button" type="submit">Comment</button>
+            </form>
+
+
+            <div>
+                {% for comment in comments %}
+                <div class="card-comment">
+                    <h4>{{comment.user.username}}</h4>
+                    <p>{{comment}}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+
         </div>
+
+
+
     </div>
 
 
@@ -98,9 +157,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"
         integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <script src="{% static 'js/main.js' %}"></script>
     
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
